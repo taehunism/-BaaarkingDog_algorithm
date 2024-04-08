@@ -1,18 +1,34 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
-char input[101];
 
-void alpha(char arr[]);
+void alpha(string arr, int len);
 
-void alpha(char arr[]) {
+int abc[26];
 
+void alpha(string arr, int len) {
+
+    for(int i=0; i<len; i++) {
+        abc[arr[i] - 97]++; 
+        // or abc[arr[i] - 'a'];
+    }
+
+    for(int i=0; i<26; i++) {
+        cout << abc[i] << " ";
+    }
 }
 
+
 int main(void) {
+    int len = 0;
+    string input;
     ios::sync_with_stdio(0);
+
     cin >> input;
-    alpha(input);
+    cin.tie(0);
+    len = input.size();
+    alpha(input, len);
+
     return 0;
 }
