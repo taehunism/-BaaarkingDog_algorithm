@@ -17,9 +17,11 @@ int main(void) {
 
         if(cmd == "pop") {
             if(s.empty() != 1) {
+                cout << s.top() << "\n";
                 s.pop();
+                
             }
-            if(s.empty()==1) cout << "-1" << "\n";
+            else if(s.empty()==1) cout << "-1" << "\n";
         }
 
         if(cmd == "top") {
@@ -27,7 +29,7 @@ int main(void) {
                 cout << s.top();
                 cout << "\n";
             }
-            if(s.empty() == 1) cout << "\1" << "\n";
+            else if(s.empty() == 1) cout << "-1" << "\n";
         }
 
         if(cmd == "size") {
