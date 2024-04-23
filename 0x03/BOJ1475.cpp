@@ -1,34 +1,24 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
 using namespace std;
-int n;
-int d;
 
-int cnt;
-int main(void) {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    int set[10] = {0,1,2,3,4,5,6,7,8,9};
-    cin >> n;
-    int m=0;
-    int temp = n;
-    bool six=false;
-    bool nine=false;
-    while(temp != 0) {
-        temp /= 10;
-        m++;
+int main() {
+    int cnt[10] = {0}; // 0부터 9까지의 숫자 개수를 저장할 배열
+    string room_number;
+    cin >> room_number;
+    
+    for(int i = 0; i<room_number.size();i++) {
+        int num = room_number[i] - '0'; // char를 int로 변환
+        cnt[num]++;
     }
-
-    for(int i = 0; i<m; i++) {
-        d = d % 10;
-        for(int j = 0; j < 10; j++) {
-            if(j == d)
-                cnt++;
-                if(d == 6) six = true;
-                if(d == 9) nine = true;
-            else continue;
-            if(six == false && nine == true) cnt--;
-                }
-    }
-    cout << cnt << '\n';
+    
+    // 6과 9는 서로 대체 가능하므로, 두 개의 합 중 최대 값을 구함
+    cnt[6] = (cnt[6] + cnt[9] + 1) / 2;
+    cnt[9] = 0; // 6과 9는 이미 처리했으므로 0으로 설정
+    
+    int answer = *max_element(cnt, cnt + 10); // 가장 큰 값이 필요한 세트의 수
+    
+    cout << answer << endl;
+    
     return 0;
 }
