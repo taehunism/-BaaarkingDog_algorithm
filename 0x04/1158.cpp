@@ -23,6 +23,13 @@ int main() {
         a[idx++] = q.front();
         q.pop();
     }
-    for(int i = 0; i<n; i++) cout << a[i] << " ";
+    cout << "<";
+    for(int i = 0; i<n; i++) {
+        if(i == n-1) cout << a[i];
+        else 
+            cout << a[i] << ", ";
+            
+    }
+    cout << ">";
     return 0;
 }
